@@ -1,0 +1,235 @@
+@import "tailwindcss";
+
+/* ---------- Design tokens (brand board) ---------- */
+:root {
+  --bg: #edebe6;
+  --ink: #111111;
+  --accent: #ff5a1f;
+  --muted: #8a8a85;
+  --line: rgb(138 138 133 / 0.4);
+  --header-h: 72px;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.1, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Paleta, raio e sombras travados: sobrescreve (não estende) o tema do Tailwind. */
+@theme {
+  --color-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --text-shadow-*: initial;
+  --blur-*: initial;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-transparent: transparent;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Utilitários da marca ---------- */
+@utility container-x {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 48px);
+}
+
+@utility section-y {
+  padding-block: clamp(80px, 12vw, 160px);
+}
+
+@utility mono-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@utility display {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+}
+
+/* Cursor "_" piscando */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.cursor {
+  color: var(--accent);
+  animation: blink 1s steps(1) infinite;
+}
+
+/* Traço laranja curto antes de citações */
+.dash {
+  display: inline-block;
+  width: 24px;
+  height: 3px;
+  background: var(--accent);
+  flex: none;
+}
+
+/* Linha fina que "desenha" — a cor vem de currentColor */
+.rule {
+  position: relative;
+  height: 1px;
+}
+
+.rule::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  transform-origin: left;
+}
+
+/* Underline em --accent crescendo da esquerda */
+.link-u {
+  position: relative;
+  display: inline-block;
+}
+
+.link-u::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease-in-out);
+}
+
+.link-u.link-u--base::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+}
+
+.link-u:hover::after,
+.link-u:focus-visible::after,
+.group:hover .link-u::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Reveals (só com JS ativo) ---------- */
+/* Linhas de título: reveal por clip-path */
+.js [data-reveal="lines"] .line {
+  display: block;
+}
+
+.js [data-reveal="lines"] .line > span {
+  display: inline-block;
+  clip-path: inset(0 0 100% 0);
+  transform: translateY(0.35em);
+  transition:
+    clip-path 0.9s var(--ease-out),
+    transform 0.9s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 120ms);
+}
+
+.js [data-reveal="lines"][data-in] .line > span {
+  clip-path: inset(-10% -5% -25% -5%);
+  transform: none;
+}
+
+/* Blocos: sobem revelados por clip-path */
+.js [data-reveal="up"] {
+  clip-path: inset(0 0 100% 0);
+  transform: translateY(24px);
+  transition:
+    clip-path 0.8s var(--ease-out),
+    transform 0.8s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+.js [data-reveal="up"][data-in] {
+  clip-path: inset(-20% -20% -20% -20%);
+  transform: none;
+}
+
+/* Linhas do grid: scaleX 0 → 1 */
+.js [data-reveal="draw"]::before {
+  transform: scaleX(0);
+  transition: transform 1.2s var(--ease-in-out);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+.js [data-reveal="draw"][data-in]::before {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js [data-reveal],
+  .js [data-reveal] .line > span,
+  .js [data-reveal]::before {
+    clip-path: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .cursor {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
