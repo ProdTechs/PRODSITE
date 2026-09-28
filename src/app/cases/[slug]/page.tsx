@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
-import { CASES } from "@/lib/content";
+import { CASES, SITE } from "@/lib/content";
 import { CasePreview } from "@/components/ui/CasePreview";
 import { Cursor } from "@/components/ui/Cursor";
 import { Lines } from "@/components/ui/Lines";
@@ -19,7 +19,18 @@ export async function generateMetadata({ params }: PageProps<"/cases/[slug]">): 
   const { slug } = await params;
   const c = CASES.find((item) => item.slug === slug);
   if (!c) return {};
-  return { title: c.title, description: c.summary };
+  return {
+    title: { absolute: `${c.title} | Solução de referência | ProdTech` },
+    description: `${c.summary} Cenário ilustrativo; não representa um cliente específico.`,
+    alternates: { canonical: `${SITE.url}/cases/${c.slug}` },
+    openGraph: {
+      type: "website",
+      url: `${SITE.url}/cases/${c.slug}`,
+      title: `${c.title} | Solução de referência | ProdTech`,
+      description: `${c.summary} Cenário ilustrativo; não representa um cliente específico.`,
+      images: ["/opengraph-image"],
+    },
+  };
 }
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -74,14 +85,16 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
       <article className="pt-[72px]">
         <div className="container-x pb-24 pt-10 sm:pt-14">
           <div className="flex items-baseline justify-between gap-6 pb-4">
-            <Link href="/#cases" className="mono-label link-u">
-              ← Cases
+            <Link href="/v2#referencias" className="mono-label link-u">
+              ← Aplicações de referência
             </Link>
             <p className="mono-label text-muted">
-              Case {pad(index + 1)} / {pad(CASES.length)}
+              Solução de referência {pad(index + 1)} / {pad(CASES.length)}
             </p>
           </div>
           <Rule />
+
+          <p className="mt-6 border border-accent/50 px-4 py-3 font-mono text-xs leading-relaxed">Cenário ilustrativo; não representa um cliente específico nem um resultado observado.</p>
 
           <Lines
             as="h1"
