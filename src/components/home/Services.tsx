@@ -10,7 +10,7 @@ export function Services() {
   return (
     <section id="servicos" className="section-y">
       <div className="container-x">
-        <SectionLabel index={3} label="O que fazemos" right={`${SERVICES.length} frentes`} />
+        <SectionLabel label="O que fazemos" right={`${SERVICES.length} frentes`} />
         <Rule />
 
         <div className="grid gap-8 pb-14 pt-12 sm:pt-16 lg:grid-cols-12 lg:items-end lg:pb-20">
@@ -30,36 +30,25 @@ export function Services() {
           {SERVICES.map((service, i) => (
             <li
               key={service.title}
-              className="group flex min-h-[340px] flex-col bg-bg p-6 transition-colors duration-300 hover:bg-ink hover:text-bg sm:p-8"
+              className="group flex min-h-60 flex-col bg-bg p-6 transition-colors duration-300 hover:bg-ink hover:text-bg sm:p-8"
             >
               <div data-reveal="up" style={{ "--i": i % 4 } as CSSProperties} className="flex flex-1 flex-col">
-              <div className="flex items-center justify-between font-mono text-xs">
-                <span className="text-muted transition-colors group-hover:text-accent">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="text-muted transition-[color,translate] duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
-                >
-                  ↗
-                </span>
-              </div>
+                <div className="flex items-start justify-between">
+                  <span className="font-mono text-xs text-muted transition-colors group-hover:text-accent">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <ServiceGlyph
+                    name={service.icon}
+                    className="h-7 w-7 text-muted transition-colors group-hover:text-accent"
+                  />
+                </div>
 
-              <ServiceGlyph name={service.icon} className="mt-10 h-10 w-10" />
-
-              <h3 className="mt-8 text-[22px] font-medium leading-tight tracking-[-0.03em]">{service.title}</h3>
-              <p className="mt-3 font-mono text-[13px] leading-relaxed text-muted transition-colors group-hover:text-bg/70">
-                {service.description}
-              </p>
-
-              <ul className="mt-auto space-y-1.5 pt-8 font-mono text-xs">
-                {service.deliverables.map((d) => (
-                  <li key={d} className="flex gap-2">
-                    <span className="text-muted transition-colors group-hover:text-accent">—</span>
-                    {d}
-                  </li>
-                ))}
-              </ul>
+                <h3 className="mt-auto pt-12 text-[22px] font-medium leading-tight tracking-[-0.03em]">
+                  {service.title}
+                </h3>
+                <p className="mt-3 font-mono text-[13px] leading-relaxed text-muted transition-colors group-hover:text-bg/70">
+                  {service.description}
+                </p>
               </div>
             </li>
           ))}

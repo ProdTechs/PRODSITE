@@ -6,11 +6,11 @@ import { Rule } from "@/components/ui/Rule";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { LeadForm } from "./LeadForm";
 
-export function FinalCta({ index = 7, total }: { index?: number; total?: number }) {
+export function FinalCta() {
   return (
     <section id="contato" className="section-y bg-ink text-bg">
       <div className="container-x">
-        <SectionLabel index={index} total={total} label="Contato" right="Diagnóstico gratuito" tone="dark" />
+        <SectionLabel label="Contato" right="Diagnóstico gratuito" tone="dark" />
         <Rule className="text-bg/15" />
 
         <div className="grid gap-16 pt-12 sm:pt-16 lg:grid-cols-12">

@@ -9,7 +9,7 @@ export function Process() {
   return (
     <section id="processo" className="section-y bg-ink text-bg">
       <div className="container-x">
-        <SectionLabel index={5} label="Como trabalhamos" right={`${PROCESS.length} etapas`} tone="dark" />
+        <SectionLabel label="Como trabalhamos" right={`${PROCESS.length} etapas`} tone="dark" />
         <Rule className="text-bg/15" />
 
         <Lines

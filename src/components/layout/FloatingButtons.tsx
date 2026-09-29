@@ -76,7 +76,7 @@ export function FloatingButtons() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Fale com a gente pelo WhatsApp"
-        className="group relative flex h-14 w-14 items-center justify-center bg-ink text-bg transition-colors duration-200 hover:bg-accent hover:text-ink"
+        className="group relative flex h-11 w-11 items-center justify-center bg-ink text-bg transition-colors duration-200 hover:bg-accent hover:text-ink"
       >
         <WhatsAppGlyph className="h-6 w-6" />
         <span className="pointer-events-none absolute right-full top-1/2 mr-3 -translate-y-1/2 whitespace-nowrap border border-ink bg-bg px-3 py-2 font-mono text-xs text-ink opacity-0 transition-[opacity,translate] duration-200 group-hover:-translate-x-1 group-hover:opacity-100 group-focus-visible:opacity-100">

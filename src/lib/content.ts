@@ -16,7 +16,7 @@ export const SITE = {
   tagline: "Tecnologia que funciona de verdade.",
   title: "ProdTech_ — Sites, bots, automações e apps sob medida",
   description:
-    "Consultoria digital em Fortaleza. Sites, bots, automações e apps sob medida — partimos da sua dor, não de um pacote pronto.",
+    "Consultoria digital. Sites, bots, automações e apps sob medida — partimos da sua dor, não de um pacote pronto.",
   // TODO: confirmar e-mail e perfis reais.
   email: "contato@prodtech.com.br",
   instagram: "https://instagram.com/",
@@ -35,7 +35,7 @@ export const TOTAL_SECTIONS = 7;
 export const HERO = {
   labelLeft: "Consultoria digital",
   labelRight: SITE.city,
-  titleLines: ["Não entregamos o mínimo.", "Entregamos o sistema inteiro."],
+  titleLines: ["Transformamos processos em produtos digitais"],
   subtitle:
     "Sites, bots, automações e apps sob medida. Partimos da sua dor, não de um pacote pronto.",
   primaryCta: "Agendar diagnóstico gratuito",
@@ -72,8 +72,8 @@ export const TERMINAL_SCENARIOS: { text: string; hl?: string }[][] = [
 ];
 
 export const MANIFESTO = {
-  label: "Manifesto",
-  quote: ["Mais do que tecnologia,", "é sobre criar soluções que fazem sentido."],
+  label: "Por que a ProdTech?",
+  quote: ["Mais do que tecnologia,é sobre criar soluções que fazem sentido"],
   rows: [
     { common: "Site bonito e parado", ours: "Site que capta, qualifica e converte" },
     { common: "Bot com menu engessado", ours: "Bot que entende, classifica e encaminha" },

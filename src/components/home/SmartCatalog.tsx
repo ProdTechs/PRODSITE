@@ -11,7 +11,7 @@ export function SmartCatalog() {
   return (
     <section id="catalogo-inteligente" className="section-y border-t border-muted/40">
       <div className="container-x">
-        <SectionLabel index={4} label="Solução em destaque" right="Catálogo inteligente" />
+        <SectionLabel label="Solução em destaque" right="Catálogo inteligente" />
         <Rule />
 
         <div className="grid gap-8 pb-16 pt-12 sm:pt-16 lg:grid-cols-12 lg:items-end lg:pb-24">
