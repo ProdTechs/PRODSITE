@@ -3,10 +3,11 @@ import { SITE } from "@/lib/content";
 import { Hero } from "@/components/home/Hero";
 import { Manifesto } from "@/components/home/Manifesto";
 import { Services } from "@/components/home/Services";
-import { SmartCatalog } from "@/components/home/SmartCatalog";
+// Seção "Solução em destaque" desativada — para voltar, descomente este import e o <SmartCatalog /> abaixo.
+// import { SmartCatalog } from "@/components/home/SmartCatalog";
 import { Process } from "@/components/home/Process";
-import { Cases } from "@/components/home/Cases";
-import { FinalCta } from "@/components/home/FinalCta";
+import { References } from "@/components/home/References";
+import { Contact } from "@/components/home/Contact";
 
 export const metadata: Metadata = {
   alternates: { canonical: SITE.url },
@@ -19,10 +20,10 @@ export default function Home() {
       <Hero />
       <Manifesto />
       <Services />
-      <SmartCatalog />
+      {/* <SmartCatalog /> */}
       <Process />
-      <Cases />
-      <FinalCta />
+      <References />
+      <Contact />
     </>
   );
 }

@@ -9,7 +9,7 @@ export function Manifesto() {
   return (
     <section id="manifesto" className="section-y bg-ink text-bg">
       <div className="container-x">
-        <SectionLabel index={2} label={MANIFESTO.label} right="Por que a ProdTech" tone="dark" />
+        <SectionLabel label={MANIFESTO.label} tone="dark" />
         <Rule className="text-bg/15" />
 
         <div className="flex gap-5 pt-14 sm:gap-8 sm:pt-20">

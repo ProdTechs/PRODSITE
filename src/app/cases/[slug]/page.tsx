@@ -158,7 +158,7 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
           </Link>
         </div>
       </article>
-      <FinalCta index={2} total={2} />
+      <FinalCta />
     </>
   );
 }
