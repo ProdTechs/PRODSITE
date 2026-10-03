@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { HERO, NAV, SITE, whatsappLink } from "@/lib/content";
 import { Cursor } from "@/components/ui/Cursor";
@@ -8,6 +9,17 @@ import { Cursor } from "@/components/ui/Cursor";
 const pad = (n: number) => String(n).padStart(2, "0");
 
 export function Header() {
+  const pathname = usePathname();
+  const isV2 = pathname === "/v2" || pathname.startsWith("/v2/");
+  const homePath = isV2 ? "/v2" : "/";
+  const navItems = isV2
+    ? [
+        { href: "/v2#capacidades", label: "Capacidades" },
+        { href: "/v2#metodo", label: "Como trabalhamos" },
+        { href: "/v2#referencias", label: "Referências" },
+        { href: "/v2#contato", label: "Contato" },
+      ]
+    : NAV;
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -38,7 +50,7 @@ export function Header() {
     >
       <div className="container-x flex h-full items-center justify-between gap-8">
         <Link
-          href="/"
+          href={homePath}
           className="text-[22px] font-semibold tracking-[-0.04em]"
           aria-label={`${SITE.name} — início`}
           onClick={() => setOpen(false)}
@@ -48,7 +60,7 @@ export function Header() {
         </Link>
 
         <nav aria-label="Principal" className="hidden items-center gap-8 lg:flex">
-          {NAV.map((item, i) => (
+          {navItems.map((item, i) => (
             <Link key={item.href} href={item.href} className="group font-mono text-[13px]">
               <span className="mr-2 text-muted transition-colors group-hover:text-accent">{pad(i + 1)}</span>
               <span className="link-u">{item.label}</span>
@@ -58,7 +70,7 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <a
-            href={whatsappLink(HERO.primaryMessage)}
+          href={whatsappLink(isV2 ? "Olá! Quero conversar sobre um processo ou produto digital." : HERO.primaryMessage)}
             target="_blank"
             rel="noopener noreferrer"
             className="group hidden h-10 items-center gap-4 bg-ink px-4 font-mono text-[13px] text-bg transition-colors hover:bg-accent hover:text-ink sm:inline-flex"
@@ -106,7 +118,7 @@ export function Header() {
           <span className="mono-label text-bg/55">Menu</span>
         </div>
         <nav aria-label="Menu mobile" className="container-x flex flex-1 flex-col justify-center">
-          {NAV.map((item, i) => (
+          {navItems.map((item, i) => (
             <Link
               key={item.href}
               href={item.href}
@@ -122,7 +134,7 @@ export function Header() {
         </nav>
         <div className="container-x flex items-center justify-between gap-4 pb-8 pt-6">
           <a
-            href={whatsappLink(HERO.primaryMessage)}
+            href={whatsappLink(isV2 ? "Olá! Quero conversar sobre um processo ou produto digital." : HERO.primaryMessage)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex h-12 items-center gap-6 bg-accent px-5 font-mono text-[13px] text-ink"

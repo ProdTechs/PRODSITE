@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FOOTER_COLUMNS, SITE } from "@/lib/content";
 import { Cursor } from "@/components/ui/Cursor";
 import { Rule } from "@/components/ui/Rule";
 
 export function Footer() {
+  const pathname = usePathname();
+  const isV2 = pathname === "/v2" || pathname.startsWith("/v2/");
   return (
     <footer className="relative overflow-hidden">
       <Rule />
@@ -23,19 +28,22 @@ export function Footer() {
               <ul className="mt-5 space-y-3">
                 {col.links.map((link) => {
                   const external = /^(https?:|mailto:)/.test(link.href);
+                  const v2Target = isV2
+                    ? link.href.replace("/#servicos", "/v2#capacidades").replace("/#processo", "/v2#metodo").replace("/#cases", "/v2#referencias").replace("/#contato", "/v2#contato")
+                    : link.href;
                   return (
                     <li key={link.label}>
                       {external ? (
                         <a
-                          href={link.href}
-                          target={link.href.startsWith("http") ? "_blank" : undefined}
+                          href={v2Target}
+                          target={v2Target.startsWith("http") ? "_blank" : undefined}
                           rel="noopener noreferrer"
                           className="link-u font-mono text-[13px]"
                         >
                           {link.label}
                         </a>
                       ) : (
-                        <Link href={link.href} className="link-u font-mono text-[13px]">
+                        <Link href={v2Target} className="link-u font-mono text-[13px]">
                           {link.label}
                         </Link>
                       )}
