@@ -16,7 +16,7 @@ export const SITE = {
   tagline: "Tecnologia que funciona de verdade.",
   title: "ProdTech_ — Sites, bots, automações e apps sob medida",
   description:
-    "Consultoria digital. Sites, bots, automações e apps sob medida — partimos da sua dor, não de um pacote pronto.",
+    "A ProdTech é uma consultoria digital de Fortaleza que atua como a área de produto das empresas. Sites, bots com IA, automações, apps e sistemas de gestão sob medida.",
   // TODO: confirmar e-mail e perfis reais.
   email: "contato@prodtech.com.br",
   instagram: "https://instagram.com/",
@@ -30,7 +30,14 @@ export const NAV = [
   { href: "/#contato", label: "Contato" },
 ] as const;
 
-export const TOTAL_SECTIONS = 7;
+export const TOTAL_SECTIONS = 8;
+
+export const ABOUT = {
+  short: "Consultoria digital de Fortaleza que atua como a área de produto das empresas.",
+  full: "A ProdTech é uma consultoria digital sediada em Fortaleza, CE. Atuamos como a área de produto e tecnologia de empresas que precisam de soluções digitais mas não possuem equipe interna. Desenhamos e construímos sites, bots com inteligência artificial, automações, aplicativos, sistemas de gestão, CRM e integrações, sempre partindo do diagnóstico do problema antes de propor qualquer solução.",
+  foundingYear: 2024,
+  location: "Fortaleza, CE, Brasil",
+};
 
 export const HERO = {
   labelLeft: "Consultoria digital",
@@ -304,6 +311,49 @@ export const FINAL_CTA = {
   secondary: "Falar no WhatsApp",
   chips: ["Site", "Bot", "Automação", "App", "Não sei ainda"],
 };
+
+export const FAQ_ITEMS: { question: string; answer: string }[] = [
+  {
+    question: "O que é a ProdTech?",
+    answer:
+      "A ProdTech é uma consultoria digital de Fortaleza que atua como a área de produto das empresas. Desenhamos e construímos sites, bots com IA, automações, apps, sistemas de gestão, CRM e integrações sob medida — sempre partindo do diagnóstico do problema antes de propor qualquer solução.",
+  },
+  {
+    question: "Para quem a ProdTech é indicada?",
+    answer:
+      "Para empresas que precisam de soluções digitais mas não possuem equipe interna de tecnologia ou produto. Atendemos negócios de varejo, saúde, agro, moda, serviços e outros setores, de pequenas empresas a operações mais complexas.",
+  },
+  {
+    question: "Quais serviços a ProdTech oferece?",
+    answer:
+      "Oferecemos oito frentes: sites e plataformas, bots e atendimento com IA, automações, aplicativos mobile e web, sistemas de gestão, CRM e funil de leads, integrações e APIs, e consultoria com diagnóstico. Cada frente funciona sozinha, mas o valor real aparece quando elas conversam entre si.",
+  },
+  {
+    question: "Como funciona o processo da ProdTech?",
+    answer:
+      "Começamos com uma call de diagnóstico gratuita para entender a dor do negócio. Em seguida, elaboramos uma proposta sob medida com escopo, prazo e resultado esperado. Depois, passamos por design e protótipo (você aprova antes de desenvolvermos), desenvolvimento com entregas parciais, e por fim entrega com suporte e melhorias contínuas.",
+  },
+  {
+    question: "Quanto custa um projeto com a ProdTech?",
+    answer:
+      "Cada projeto é orçado sob medida após a call de diagnóstico gratuita. Não trabalhamos com pacotes prontos — o escopo, prazo e investimento são definidos a partir das necessidades reais do negócio.",
+  },
+  {
+    question: "Onde a ProdTech atua?",
+    answer:
+      "Nosso escritório fica em Fortaleza, CE, mas atendemos clientes de todo o Brasil de forma remota. Reuniões, acompanhamento e entregas acontecem online.",
+  },
+  {
+    question: "O que é o diagnóstico gratuito?",
+    answer:
+      "É uma call de 30 minutos sem compromisso onde entendemos o processo e as dores do seu negócio. Você sai da conversa com uma visão clara do que pode ser feito, mesmo que decida não seguir com a ProdTech.",
+  },
+  {
+    question: "A ProdTech trabalha com inteligência artificial?",
+    answer:
+      "Sim. Utilizamos IA em bots de atendimento para WhatsApp e Instagram, em sistemas de lead scoring que classificam contatos automaticamente, e em automações que conectam diferentes ferramentas do negócio de forma inteligente.",
+  },
+];
 
 export const FOOTER_COLUMNS = [
   {

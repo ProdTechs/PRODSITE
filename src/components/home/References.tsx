@@ -1,10 +1,14 @@
+import Link from "next/link";
+import { CASES } from "@/lib/content";
+
 const references = [
   ["Leads dispersos no atendimento", "Catálogo conectado ao CRM e à qualificação", "Acompanhar tempo de resposta e conversão"],
   ["Informações operacionais em planilhas", "Sistema de gestão com visão de operação", "Acompanhar tempo de fechamento e retrabalho"],
   ["Agendamentos feitos manualmente", "Experiência digital conectada à agenda", "Acompanhar conclusão e faltas"],
 ];
 
-/** Aplicações de referência no formato da /v2. id="cases" mantém os links do menu e do rodapé. */
+const pad = (n: number) => String(n).padStart(2, "0");
+
 export function References() {
   return (
     <section id="cases" className="section-y" aria-labelledby="referencias-titulo">
@@ -34,6 +38,26 @@ export function References() {
               </p>
             </article>
           ))}
+        </div>
+
+        <div className="mt-14">
+          <p className="mono-label text-muted">Soluções de referência</p>
+          <div className="mt-6 border-t border-muted/40">
+            {CASES.map((c, i) => (
+              <Link
+                key={c.slug}
+                href={`/cases/${c.slug}`}
+                className="group grid grid-cols-[48px_1fr_auto] items-center gap-4 border-b border-muted/40 py-5 transition-colors hover:bg-ink hover:text-bg sm:grid-cols-[48px_1fr_1fr_auto]"
+              >
+                <span className="font-mono text-sm text-accent">{pad(i + 1)}</span>
+                <span className="text-lg font-medium tracking-[-0.03em]">{c.title}</span>
+                <span className="hidden font-mono text-sm text-muted group-hover:text-bg/60 sm:block">
+                  {c.tags.join(" · ")}
+                </span>
+                <span aria-hidden="true" className="font-mono group-hover:text-accent">→</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>

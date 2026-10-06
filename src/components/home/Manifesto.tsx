@@ -12,6 +12,8 @@ export function Manifesto() {
         <SectionLabel label={MANIFESTO.label} tone="dark" />
         <Rule className="text-bg/15" />
 
+        <h2 className="sr-only">Por que a ProdTech</h2>
+
         <div className="flex gap-5 pt-14 sm:gap-8 sm:pt-20">
           <span className="dash mt-[0.55em] sm:mt-[0.7em]" aria-hidden="true" />
           <Lines

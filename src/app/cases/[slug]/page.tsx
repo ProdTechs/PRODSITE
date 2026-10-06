@@ -3,8 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { CSSProperties } from "react";
 import { CASES, SITE } from "@/lib/content";
+import { caseBreadcrumb } from "@/lib/jsonld";
 import { CasePreview } from "@/components/ui/CasePreview";
 import { Cursor } from "@/components/ui/Cursor";
+import { JsonLd } from "@/components/ui/JsonLd";
 import { Lines } from "@/components/ui/Lines";
 import { Rule } from "@/components/ui/Rule";
 import { FinalCta } from "@/components/home/FinalCta";
@@ -82,10 +84,11 @@ export default async function CasePage({ params }: PageProps<"/cases/[slug]">) {
 
   return (
     <>
+      <JsonLd data={caseBreadcrumb(c)} />
       <article className="pt-[72px]">
         <div className="container-x pb-24 pt-10 sm:pt-14">
           <div className="flex items-baseline justify-between gap-6 pb-4">
-            <Link href="/v2#referencias" className="mono-label link-u">
+            <Link href="/#cases" className="mono-label link-u">
               ← Aplicações de referência
             </Link>
             <p className="mono-label text-muted">

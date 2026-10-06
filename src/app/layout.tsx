@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { SITE } from "@/lib/content";
+import { organizationSchema, localBusinessSchema, webSiteSchema } from "@/lib/jsonld";
+import { JsonLd } from "@/components/ui/JsonLd";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingButtons } from "@/components/layout/FloatingButtons";
@@ -49,8 +51,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${jetbrains.variable}`} suppressHydrationWarning>
       <head>
-        {/* Habilita os estados iniciais das animações só quando há JS */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <JsonLd data={organizationSchema()} />
+        <JsonLd data={localBusinessSchema()} />
+        <JsonLd data={webSiteSchema()} />
       </head>
       <body>
         <a
