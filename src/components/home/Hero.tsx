@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
-import { HERO } from "@/lib/content";
+import { HERO, whatsappLink } from "@/lib/content";
+import { Button } from "@/components/ui/Button";
 import { Cursor } from "@/components/ui/Cursor";
 import { Lines } from "@/components/ui/Lines";
 import { Rule } from "@/components/ui/Rule";
@@ -27,6 +28,37 @@ export function Hero() {
           >
             {HERO.subtitle}
           </p>
+
+          <div
+            data-reveal="up"
+            style={{ "--i": 4 } as CSSProperties}
+            className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-5"
+          >
+            <Button href={whatsappLink(HERO.primaryMessage)} variant="ink">
+              {HERO.primaryCta}
+            </Button>
+            <a href="#servicos" className="link-u font-mono text-[13px]">
+              {HERO.secondaryCta}
+            </a>
+          </div>
+        </div>
+
+        <div
+          data-reveal="up"
+          style={{ "--i": 5 } as CSSProperties}
+          className="grid grid-cols-3 border-t border-muted/40"
+        >
+          {HERO.stats.map((stat, i) => (
+            <div
+              key={stat.label}
+              className={`py-6 ${i > 0 ? "border-l border-muted/40 pl-6" : ""}`}
+            >
+              <p className="font-mono text-[clamp(28px,3vw,40px)] font-medium tracking-[-0.03em]">
+                {stat.value}
+              </p>
+              <p className="mt-1 font-mono text-xs text-muted">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
